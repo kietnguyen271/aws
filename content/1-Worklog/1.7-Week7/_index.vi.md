@@ -1,36 +1,31 @@
 ---
-title: "Week 8 Worklog"
+title: "Nhật ký Tuần 7"
 date: ""
 weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
 
-### Week 8 Objectives
+### Mục tiêu Tuần 7
 
-* Study and understand the main pillars of the AWS Well-Architected Framework:
-  - Secure Architectures (IAM, MFA, SCP, KMS, Security Groups, NACLs, GuardDuty, Shield, WAF, Secrets Manager)
-  - Resilient Architectures (Multi-AZ/Region, Auto Scaling, Route 53, Load Balancing, Backup & Restore)
-  - High-Performance Architectures (Compute scaling, storage layers, caching, CloudFront)
-  - Cost-Optimized Architectures (Cost Explorer, Budgets, Saving Plans, NAT Gateway optimization, Storage Tiering)
-* Learn and deploy API Gateway Proxy Resource.
+* Thực hiện phân tích chi phí và hiệu năng bằng AWS Glue và Amazon Athena.
+* Xây dựng và kiểm thử frontend serverless tích hợp với API Gateway.
+* Triển khai cơ chế xác thực người dùng bằng Amazon Cognito.
+* Hiểu cách API Gateway xử lý Integration Request và Integration Response.
 
-### Tasks Completed This Week
+### Các Nhiệm Vụ Hoàn Thành Trong Tuần
 
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | ---- | ---------- | --------------- | ------------------ |
-| 2 | - Studied Secure Architectures:<br>  + IAM, MFA, SCP, KMS<br>  + Security Groups, NACLs, GuardDuty, Shield, WAF, Secrets Manager | 27/10/2025 | 27/10/2025 | |
-| 3 | - Learned about Resilient Architectures:<br>  + Multi-AZ/Region, Auto Scaling<br>  + Route 53, Load Balancing, Backup & Restore | 28/10/2025 | 28/10/2025 | |
-| 4 | - Explored High-Performing Architectures:<br>  + Compute scaling (EC2, Lambda, Fargate)<br>  + Storage services, caching, CloudFront | 29/10/2025 | 29/10/2025 | |
-| 5 | - Studied Cost-Optimized Architectures:<br>  + Cost Explorer, Budgets, Saving Plans<br>  + NAT Gateway optimization, Storage Tiering | 30/10/2025 | 30/10/2025 | |
-| 6 | - Learned about API Gateway Proxy Resource and deployed the configuration following the tutorial | 31/10/2025 | 31/10/2025 | <https://youtu.be/zZzHTHs72Sk?si=qhdd4v0mADIh3MJ0> |
+| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | -------- | ------------- | ---------------- | ------------------ |
+| 2 | - Thực hiện phân tích chi phí và hiệu năng bằng AWS Glue và Amazon Athena.<br> - Đánh giá hiệu suất workload và ước lượng chi phí vận hành. | 20/10/2025 | 20/10/2025 | <https://000040.awsstudygroup.com/> |
+| 3 | - Serverless workflow: xây dựng frontend để gọi API Gateway.<br> - <strong>Thực hành:</strong><br>  + Triển khai FE và Lambda<br>  + Cấu hình API Gateway<br>  + Kiểm thử API bằng Postman và giao diện frontend | 21/10/2025 | 21/10/2025 | <https://000079.awsstudygroup.com> |
+| 4 | - Nghiên cứu cơ chế xác thực của Amazon Cognito. | 22/10/2025 | 22/10/2025 | <https://000081.awsstudygroup.com/vi/> |
+| 5 | - Tạo Amazon Cognito User Pool và cấu hình các thiết lập cần thiết. | 23/10/2025 | 23/10/2025 | <https://youtu.be/S1X5QxBoX4M?si=wSddLWXGzbsceVS3> |
+| 6 | - Tìm hiểu cách Integration Request và Integration Response hoạt động trong API Gateway. | 24/10/2025 | 24/10/2025 | <https://youtu.be/q-0JoYFag7k?si=E343RKXlnw9f456A> |
 
-### Week 8 Outcomes
+### Kết quả Tuần 7
 
-* Completed the study of all major AWS architecture pillars:
-  - Security best practices and protective AWS services  
-  - Resiliency patterns for multi-AZ and multi-region systems  
-  - High-performance strategies across compute, storage, and caching  
-  - Cost optimization techniques using AWS tools and architectures  
-* Successfully deployed an API Gateway Proxy Resource.
-* Finished all tasks from Day 2 through Day 6 on schedule.
+* Hoàn thành phân tích hiệu năng và chi phí thành công.
+* Triển khai frontend và Lambda; xác thực các tương tác API.
+* Cấu hình Cognito và tạo User Pool phục vụ xác thực.
+* Hiểu rõ hơn cách API Gateway xử lý luồng tích hợp (integration flow).
