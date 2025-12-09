@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Internship Report</title><link>https://thienluhoan.github.io/workshop-template/</link><description>Recent content on Internship Report</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate><atom:link href="https://thienluhoan.github.io/workshop-template/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://thienluhoan.github.io/workshop-template/5-workshop/aws_resources_inventory/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://thienluhoan.github.io/workshop-template/5-workshop/aws_resources_inventory/</guid><description>&lt;h1 id="aws-resources-inventory---smoking-cessation-platform">AWS Resources Inventory - Smoking Cessation Platform&lt;/h1>
+&lt;p>Cập nhật: 2025-12-03&lt;/p>
+&lt;h2 id="architecture-type-hybrid-ec2--lambda--managed-services">Architecture Type: HYBRID (EC2 + Lambda + Managed Services)&lt;/h2>
+&lt;p>This platform uses a hybrid architecture combining:&lt;/p>
+&lt;ul>
+&lt;li>Always-on EC2 servers for main applications&lt;/li>
+&lt;li>Serverless Lambda for event-driven tasks&lt;/li>
+&lt;li>Managed services for CDN, authentication, load balancing&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="account-information">Account Information&lt;/h2>
+&lt;p>Account ID: 140570829989
+User: AdminUser (IAM)
+Regions: us-east-1 (Cognito), ap-southeast-1 (main infrastructure)&lt;/p>
+&lt;hr>
+&lt;h2 id="s3-buckets">S3 Buckets&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">Bucket Name&lt;/th>
+ &lt;th style="text-align: left">Region&lt;/th>
+ &lt;th style="text-align: left">Created&lt;/th>
+ &lt;th style="text-align: left">Purpose&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">leaflungs-frontend-new&lt;/td>
+ &lt;td style="text-align: left">us-east-1&lt;/td>
+ &lt;td style="text-align: left">2025-11-24&lt;/td>
+ &lt;td style="text-align: left">Frontend hosting&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">leaflungs-images&lt;/td>
+ &lt;td style="text-align: left">ap-southeast-1&lt;/td>
+ &lt;td style="text-align: left">2025-11-25&lt;/td>
+ &lt;td style="text-align: left">Chat/message images&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">leaflungs-images-sg&lt;/td>
+ &lt;td style="text-align: left">ap-southeast-1&lt;/td>
+ &lt;td style="text-align: left">2025-11-30&lt;/td>
+ &lt;td style="text-align: left">Image storage&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="cognito">Cognito&lt;/h2>
+&lt;p>User Pool:&lt;/p></description></item></channel></rss>

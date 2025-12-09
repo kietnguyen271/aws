@@ -1,0 +1,507 @@
+<!doctype html><html lang=vi class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.134.3"><meta name=description content><meta name=author content="thienlh@thienlu.com"><link rel=icon href=../../../images/favicon.png type=image/png><title>5.6 Setup RDS Database :: Báo cáo thực tập</title>
+<link href=../../../css/nucleus.css?1765252493 rel=stylesheet><link href=../../../css/fontawesome-all.min.css?1765252493 rel=stylesheet><link href=../../../css/hybrid.css?1765252493 rel=stylesheet><link href=../../../css/featherlight.min.css?1765252493 rel=stylesheet><link href=../../../css/perfect-scrollbar.min.css?1765252493 rel=stylesheet><link href=../../../css/auto-complete.css?1765252493 rel=stylesheet><link href=../../../css/atom-one-dark-reasonable.css?1765252493 rel=stylesheet><link href=../../../css/theme.css?1765252493 rel=stylesheet><link href=../../../css/hugo-theme.css?1765252493 rel=stylesheet><link href=../../../css/theme-workshop.css?1765252493 rel=stylesheet><script src=../../../js/jquery-3.3.1.min.js?1765252493></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=../../../vi/5-workshop/5.6-setup-rds-database/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=../../../><svg id="Layer_1" data-name="Layer 1" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff}.cls-2{fill:#f90;fill-rule:evenodd}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09 10.85a4.7 4.7.0 00.19 1.48 7.73 7.73.0 00.54 1.19.77.77.0 01.12.38.64.64.0 01-.32.49l-1 .7a.83.83.0 01-.44.15.69.69.0 01-.49-.23 3.8 3.8.0 01-.6-.77q-.25-.42-.51-1a6.14 6.14.0 01-4.89 2.3 4.54 4.54.0 01-3.32-1.19 4.27 4.27.0 01-1.22-3.2 4.28 4.28.0 011.46-3.4A6.06 6.06.0 017.69 6.46a12.47 12.47.0 011.76.13q.92.13 1.91.36V5.73a3.65 3.65.0 00-.79-2.66A3.81 3.81.0 007.86 2.3a7.71 7.71.0 00-1.79.22 12.78 12.78.0 00-1.79.57 4.55 4.55.0 01-.58.22h-.26q-.35.0-.35-.52V2a1.09 1.09.0 01.12-.58 1.2 1.2.0 01.47-.35A10.88 10.88.0 015.77.32 10.19 10.19.0 018.36.0a6 6 0 014.35 1.35 5.49 5.49.0 011.38 4.09zM7.34 13.38a5.36 5.36.0 001.72-.31A3.63 3.63.0 0010.63 12 2.62 2.62.0 0011.19 11a5.63 5.63.0 00.16-1.44v-.7a14.35 14.35.0 00-1.53-.28 12.37 12.37.0 00-1.56-.1 3.84 3.84.0 00-2.47.67A2.34 2.34.0 005 11a2.35 2.35.0 00.61 1.76A2.4 2.4.0 007.34 13.38zm13.35 1.8a1 1 0 01-.64-.16 1.3 1.3.0 01-.35-.65L15.81 1.51a3 3 0 01-.15-.67.36.36.0 01.41-.41H17.7a1 1 0 01.65.16 1.4 1.4.0 01.33.65l2.79 11 2.59-11A1.17 1.17.0 0124.39.6a1.1 1.1.0 01.67-.16H26.4a1.1 1.1.0 01.67.16 1.17 1.17.0 01.32.65L30 12.39 32.88 1.25A1.39 1.39.0 0133.22.6a1 1 0 01.65-.16h1.54a.36.36.0 01.41.41 1.36 1.36.0 010 .26 3.64 3.64.0 01-.12.41l-4 12.86a1.3 1.3.0 01-.35.65 1 1 0 01-.64.16H29.25a1 1 0 01-.67-.17 1.26 1.26.0 01-.32-.67L25.67 3.64l-2.56 10.7a1.26 1.26.0 01-.32.67 1 1 0 01-.67.17zm21.36.44a11.28 11.28.0 01-2.56-.29 7.44 7.44.0 01-1.92-.67 1 1 0 01-.61-.93v-.84q0-.52.38-.52a.9.9.0 01.31.06l.42.17a8.77 8.77.0 001.83.58 9.78 9.78.0 002 .2 4.48 4.48.0 002.43-.55 1.76 1.76.0 00.86-1.57 1.61 1.61.0 00-.45-1.16A4.29 4.29.0 0043 9.22l-2.41-.76A5.15 5.15.0 0138 6.78a3.94 3.94.0 01-.83-2.41 3.7 3.7.0 01.45-1.85 4.47 4.47.0 011.19-1.37 5.27 5.27.0 011.7-.86A7.4 7.4.0 0142.6.0a8.87 8.87.0 011.12.07q.57.07 1.08.19t.95.26a4.27 4.27.0 01.7.29 1.59 1.59.0 01.49.41.94.94.0 01.15.55v.79q0 .52-.38.52a1.76 1.76.0 01-.64-.2 7.74 7.74.0 00-3.2-.64 4.37 4.37.0 00-2.21.47 1.6 1.6.0 00-.79 1.48 1.58 1.58.0 00.49 1.18 4.94 4.94.0 001.83.92L44.55 7a5.08 5.08.0 012.57 1.6A3.76 3.76.0 0147.9 11a4.21 4.21.0 01-.44 1.93 4.4 4.4.0 01-1.21 1.47 5.43 5.43.0 01-1.85.93A8.25 8.25.0 0142.05 15.62z"/><path class="cls-2" d="M45.19 23.81C39.72 27.85 31.78 30 25 30A36.64 36.64.0 01.22 20.57c-.51-.46-.06-1.09.56-.74A49.78 49.78.0 0025.53 26.4 49.23 49.23.0 0044.4 22.53C45.32 22.14 46.1 23.14 45.19 23.81z"/><path class="cls-2" d="M47.47 21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74 3.13-2.2 8.27-1.57 8.86-.83s-.16 5.89-3.09 8.35c-.45.38-.88.18-.68-.32C46.69 25.8 48.17 22.11 47.47 21.21z"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=../../../js/lunr.min.js?1765252493></script><script type=text/javascript src=../../../js/auto-complete.js?1765252493></script><script type=text/javascript>var baseurl="https://thienluhoan.github.io/workshop-template//vi"</script><script type=text/javascript src=../../../js/search.js?1765252493></script></div><div class=highlightable><ul class=topics><li data-nav-id=/vi/1-worklog/ title="Nhật ký công việc" class=dd-item><a href=../../../vi/1-worklog/><b>1. </b>Nhật ký công việc
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.1-week1/ title="Week 2 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.1-week1/><b>1.2. </b>Week 2 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.4-week4/ title="Week 4 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.4-week4/><b>1.4. </b>Week 4 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.7-week7/ title="Week 8 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.7-week7/><b>1.8. </b>Week 8 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.8-week8/ title="Week 8 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.8-week8/><b>1.8. </b>Week 8 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.9-week9/ title="Week 9 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.9-week9/><b>1.9. </b>Week 9 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.2-week2/ title="Worklog Tuần 2" class=dd-item><a href=../../../vi/1-worklog/1.2-week2/><b>1.2. </b>Worklog Tuần 2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.10-week10/ title="Week 10 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.10-week10/><b>1.10. </b>Week 10 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.11-week11/ title="Week 11 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.11-week11/><b>1.11. </b>Week 11 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.12-week12/ title="Week 12 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.12-week12/><b>1.12. </b>Week 12 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.3-week3/ title="Week 3 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.3-week3/><b>1.3. </b>Week 3 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.5-week5/ title="Week 5 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.5-week5/><b>1.5. </b>Week 5 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.6-week6/ title="Week 6 Worklog" class=dd-item><a href=../../../vi/1-worklog/1.6-week6/><b>1.6. </b>Week 6 Worklog
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/2-proposal/ title=Proposal class=dd-item><a href=../../../vi/2-proposal/><b>2. </b>Proposal
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/ title=Blogs class=dd-item><a href=../../../vi/3-blogstranslated/><b>3. </b>Blogs
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/3-blogstranslated/3.1-blog1/ title="Blog 1" class=dd-item><a href=../../../vi/3-blogstranslated/3.1-blog1/><b>3.1. </b>Blog 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/3.2-blog2/ title="Blog 2" class=dd-item><a href=../../../vi/3-blogstranslated/3.2-blog2/><b>3.2. </b>Blog 2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/3.3-blog3/ title="Blog 3" class=dd-item><a href=../../../vi/3-blogstranslated/3.3-blog3/><b>3.3. </b>Blog 3
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/4-eventparticipated/ title="Các sự kiện đã tham gia" class=dd-item><a href=../../../vi/4-eventparticipated/><b>4. </b>Các sự kiện đã tham gia
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/4-eventparticipated/4.1-event1/ title="AWS Cloud Day Vietnam - AI Edition 2025" class=dd-item><a href=../../../vi/4-eventparticipated/4.1-event1/><b>4.1. </b>AWS Cloud Day Vietnam - AI Edition 2025
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.2-event2/ title="Khám Phá Agentic AI – Workshop Amazon QuickSuite" class=dd-item><a href=../../../vi/4-eventparticipated/4.2-event2/><b>4.2. </b>Khám Phá Agentic AI – Workshop Amazon QuickSuite
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.3-event3/ title="AWS Cloud Mastery Series #3 - Chuyên sâu về Trụ cột Bảo mật" class=dd-item><a href=../../../vi/4-eventparticipated/4.3-event3/><b>4.3. </b>AWS Cloud Mastery Series #3 - Chuyên sâu về Trụ cột Bảo mật
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.4-event4/ title="AWS Cloud Mastery Series #2 - DevOps trên AWS" class=dd-item><a href=../../../vi/4-eventparticipated/4.4-event4/><b>4.4. </b>AWS Cloud Mastery Series #2 - DevOps trên AWS
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.5-event5/ title="AWS Cloud Mastery Series #1 – AI/ML/GenAI on AWS" class=dd-item><a href=../../../vi/4-eventparticipated/4.5-event5/><b>4.5. </b>AWS Cloud Mastery Series #1 – AI/ML/GenAI on AWS
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.6-event6/ title="AWS Cloud Mastery Series #1" class=dd-item><a href=../../../vi/4-eventparticipated/4.6-event6/><b>4.6. </b>AWS Cloud Mastery Series #1
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/ title=Workshop class="dd-item
+parent"><a href=../../../vi/5-workshop/><b>5. </b>Workshop
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.1-introduction/ title="5.1 Introduction" class=dd-item><a href=../../../vi/5-workshop/5.1-introduction/><b>5.1. </b>5.1 Introduction
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.2-perequisites/ title="5.2 Prerequisites" class=dd-item><a href=../../../vi/5-workshop/5.2-perequisites/><b>5.2. </b>5.2 Prerequisites
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.3-setup-cognito/ title="5.3 Setup Cognito" class=dd-item><a href=../../../vi/5-workshop/5.3-setup-cognito/><b>5.3. </b>5.3 Setup Cognito
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-setup-lambda/ title="5.4 Setup Lambda" class=dd-item><a href=../../../vi/5-workshop/5.4-setup-lambda/><b>5.4. </b>5.4 Setup Lambda
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.5-setup-api-gateway/ title="5.5 Setup API Gateway" class=dd-item><a href=../../../vi/5-workshop/5.5-setup-api-gateway/><b>5.5. </b>5.5 Setup API Gateway
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.6-setup-rds-database/ title="5.6 Setup RDS Database" class="dd-item
+active"><a href=../../../vi/5-workshop/5.6-setup-rds-database/><b>5.6. </b>5.6 Setup RDS Database
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.7-setup-s3-cloudfront/ title="5.7 Setup S3 + CloudFront" class=dd-item><a href=../../../vi/5-workshop/5.7-setup-s3-cloudfront/><b>5.7. </b>5.7 Setup S3 + CloudFront
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.8-setup-vpc-security/ title="Setup VPC & Security" class=dd-item><a href=../../../vi/5-workshop/5.8-setup-vpc-security/><b>5.8. </b>Setup VPC & Security
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.9-monitoring-logging/ title="Monitoring & Logging" class=dd-item><a href=../../../vi/5-workshop/5.9-monitoring-logging/><b>5.9. </b>Monitoring & Logging
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.10-cleanup/ title="Cleanup & Cost Optimization" class=dd-item><a href=../../../vi/5-workshop/5.10-cleanup/><b>5.10. </b>Cleanup & Cost Optimization
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/6-self-evaluation/ title="Tự đánh giá" class=dd-item><a href=../../../vi/6-self-evaluation/><b>6. </b>Tự đánh giá
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/7-feedback/ title="Chia sẻ & Đóng góp Ý kiến" class=dd-item><a href=../../../vi/7-feedback/><b>7. </b>Chia sẻ & Đóng góp Ý kiến
+<i class="fas fa-check read-icon"></i></a></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://www.facebook.com/groups/awsstudygroupfcj/><i class='fab fa-facebook'></i> AWS Study Group</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding><i class="fas fa-language fa-fw"></i><div class=select-style><select id=select-language onchange="location=this.value"><option id=en value=https://thienluhoan.github.io/workshop-template/5-workshop/5.6-setup-rds-database/>English</option><option id=vi value=https://thienluhoan.github.io/workshop-template/vi/5-workshop/5.6-setup-rds-database/ selected>Tiếng Việt</option></select><svg id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="255" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255"><g><g id="arrow-drop-down"><polygon points="0,63.75 127.5,191.25 255,63.75"/></g></g></svg></div></a></li><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><left><b>Workshop</b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title=Migrate alt="web counter" border=0></a><br><b><a href=https://cloudjourney.awsstudygroup.com/>Cloud Journey</a></b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" alt="web counter" border=0>
+</left><left><br><br><b>Last Updated</b><br><i><span id=lastUpdated style=color:orange></span>
+</i><script>const today=new Date,formattedDate=today.toLocaleDateString("en-GB");document.getElementById("lastUpdated").textContent=formattedDate</script></left><left><br><br><b>Team</b><br><i><a href=https://www.facebook.com/groups/660548818043427 style=color:orange>First Cloud Journey</a><br></i></left><script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i>
+</a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=../../../vi/>Báo cáo thực tập</a> > <a href=../../../vi/5-workshop/>Workshop</a> > 5.6 Setup RDS Database</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#mục-tiêu-module>Mục tiêu Module</a></li><li><a href=#ec2-instances-overview>EC2 Instances Overview</a></li><li><a href=#phần-1-create-security-groups>Phần 1: Create Security Groups</a><ul><li><a href=#bước-1-create-database-security-group>Bước 1: Create Database Security Group</a></li><li><a href=#bước-2-add-inbound-rules-for-db-sg>Bước 2: Add Inbound Rules for DB-SG</a></li><li><a href=#bước-3-create-application-security-group>Bước 3: Create Application Security Group</a></li><li><a href=#bước-4-add-inbound-rules-for-app-sg>Bước 4: Add Inbound Rules for App-SG</a></li><li><a href=#bước-5-add-outbound-rules>Bước 5: Add Outbound Rules</a></li></ul></li><li><a href=#phần-2-create-ec2-instances>Phần 2: Create EC2 Instances</a><ul><li><a href=#bước-1-launch-first-instance-postgresql>Bước 1: Launch First Instance (PostgreSQL)</a></li><li><a href=#bước-2-configure-network>Bước 2: Configure Network</a></li><li><a href=#bước-3-configure-storage>Bước 3: Configure Storage</a></li><li><a href=#bước-4-add-tags>Bước 4: Add Tags</a></li><li><a href=#bước-5-note-private-ip-address>Bước 5: Note Private IP Address</a></li><li><a href=#bước-6-create-mongodb-instance-same-steps>Bước 6: Create MongoDB Instance (Same Steps)</a></li><li><a href=#bước-7-create-application-instances>Bước 7: Create Application Instances</a></li></ul></li><li><a href=#phần-3-setup-postgresql-on-db-pg-instance>Phần 3: Setup PostgreSQL on DB-PG Instance</a><ul><li><a href=#bước-1-connect-to-instance>Bước 1: Connect to Instance</a></li><li><a href=#bước-2-update-system>Bước 2: Update System</a></li><li><a href=#bước-3-install-postgresql>Bước 3: Install PostgreSQL</a></li><li><a href=#bước-4-initialize-database-cluster>Bước 4: Initialize Database Cluster</a></li><li><a href=#bước-5-start-postgresql-service>Bước 5: Start PostgreSQL Service</a></li><li><a href=#bước-6-configure-postgresql-for-network-access>Bước 6: Configure PostgreSQL for Network Access</a></li><li><a href=#bước-7-configure-client-authentication>Bước 7: Configure Client Authentication</a></li><li><a href=#bước-8-restart-postgresql>Bước 8: Restart PostgreSQL</a></li><li><a href=#bước-9-create-smoking_cessation-database>Bước 9: Create smoking_cessation Database</a></li><li><a href=#bước-10-verify-postgresql-is-listening>Bước 10: Verify PostgreSQL is Listening</a></li></ul></li><li><a href=#phần-4-setup-mongodb-on-db-mongo-instance>Phần 4: Setup MongoDB on DB-Mongo Instance</a><ul><li><a href=#bước-1-connect-to-instance-1>Bước 1: Connect to Instance</a></li><li><a href=#bước-2-update-system-1>Bước 2: Update System</a></li><li><a href=#bước-3-install-mongodb>Bước 3: Install MongoDB</a></li><li><a href=#bước-4-configure-mongodb-for-network-access>Bước 4: Configure MongoDB for Network Access</a></li><li><a href=#bước-5-start-mongodb-service>Bước 5: Start MongoDB Service</a></li><li><a href=#bước-6-create-mongodb-database--user>Bước 6: Create MongoDB Database & User</a></li><li><a href=#bước-7-create-application-database--user>Bước 7: Create Application Database & User</a></li><li><a href=#bước-8-verify-mongodb-is-listening>Bước 8: Verify MongoDB is Listening</a></li></ul></li><li><a href=#phần-5-test-database-connectivity>Phần 5: Test Database Connectivity</a><ul><li><a href=#bước-1-test-postgresql-from-app-instance>Bước 1: Test PostgreSQL from App Instance</a></li><li><a href=#bước-2-test-mongodb-from-app-instance>Bước 2: Test MongoDB from App Instance</a></li><li><a href=#bước-3-test-inter-instance-ping>Bước 3: Test Inter-Instance Ping</a></li></ul></li><li><a href=#phần-6-create-database-tables-postgresql>Phần 6: Create Database Tables (PostgreSQL)</a><ul><li><a href=#bước-1-connect-to-database>Bước 1: Connect to Database</a></li><li><a href=#bước-2-create-tables>Bước 2: Create Tables</a></li><li><a href=#bước-3-exit-psql>Bước 3: Exit psql</a></li></ul></li><li><a href=#phần-7-setup-application-servers-ec2-instances>Phần 7: Setup Application Servers (EC2 Instances)</a><ul><li><a href=#bước-1-connect-to-application-instance>Bước 1: Connect to Application Instance</a></li><li><a href=#bước-2-install-nodejs--npm>Bước 2: Install Node.js & npm</a></li><li><a href=#bước-3-create-application-directory>Bước 3: Create Application Directory</a></li><li><a href=#bước-4-create-basic-express-server>Bước 4: Create Basic Express Server</a></li><li><a href=#bước-5-test-application>Bước 5: Test Application</a></li><li><a href=#bước-6-create-systemd-service-optional>Bước 6: Create Systemd Service (Optional)</a></li></ul></li><li><a href=#phần-8-setup-monitoring--cloudwatch>Phần 8: Setup Monitoring & CloudWatch</a><ul><li><a href=#bước-1-enable-detailed-monitoring>Bước 1: Enable Detailed Monitoring</a></li><li><a href=#bước-2-create-cloudwatch-alarms>Bước 2: Create CloudWatch Alarms</a></li><li><a href=#bước-3-create-dashboard>Bước 3: Create Dashboard</a></li></ul></li><li><a href=#phần-9-setup-database-backups>Phần 9: Setup Database Backups</a><ul><li><a href=#bước-1-create-backup-directory>Bước 1: Create Backup Directory</a></li><li><a href=#bước-2-postgresql-automated-backup>Bước 2: PostgreSQL Automated Backup</a></li><li><a href=#bước-3-mongodb-automated-backup>Bước 3: MongoDB Automated Backup</a></li><li><a href=#bước-4-upload-backups-to-s3-optional>Bước 4: Upload Backups to S3 (Optional)</a></li></ul></li><li><a href=#environment-variables-summary>Environment Variables Summary</a></li><li><a href=#checklist>Checklist</a></li><li><a href=#troubleshooting>Troubleshooting</a><ul><li><a href=#cannot-connect-to-postgresql>Cannot Connect to PostgreSQL</a></li><li><a href=#cannot-connect-to-mongodb>Cannot Connect to MongoDB</a></li><li><a href=#network-connectivity-issues>Network Connectivity Issues</a></li><li><a href=#high-cpu-on-database-instance>High CPU on Database Instance</a></li></ul></li><li><a href=#cost-analysis>Cost Analysis</a></li><li><a href=#next-steps>Next Steps</a></li><li><a href=#kết-quả-đạt-được>Kết Quả Đạt Được</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>5.6 Setup RDS Database</h1><h1 id=module-6-create-ec2-instances--setup-databases>Module 6: Create EC2 Instances & Setup Databases</h1><h2 id=mục-tiêu-module>Mục tiêu Module</h2><ul><li>Tạo 4 EC2 instances từ đầu</li><li>Setup PostgreSQL trên DB-PG instance</li><li>Setup MongoDB trên DB-Mongo instance</li><li>Cấu hình security groups</li><li>Tạo databases & users</li><li>Test connectivity giữa instances</li><li>Setup monitoring & backups</li></ul><p><strong>Duration</strong>: 5-6 giờ</p><hr><h2 id=ec2-instances-overview>EC2 Instances Overview</h2><p>4 instances sẽ được tạo ở ap-southeast-1 (t4g.small, ARM-based, cost-effective):</p><table><thead><tr><th style=text-align:left>Instance Name</th><th style=text-align:left>Type</th><th style=text-align:left>Purpose</th><th style=text-align:left>Database</th><th style=text-align:left>Port</th></tr></thead><tbody><tr><td style=text-align:left>smoking-db-pg</td><td style=text-align:left>t4g.small</td><td style=text-align:left>PostgreSQL Server</td><td style=text-align:left>smoking_cessation</td><td style=text-align:left>5432</td></tr><tr><td style=text-align:left>smoking-db-mongo</td><td style=text-align:left>t4g.small</td><td style=text-align:left>MongoDB Server</td><td style=text-align:left>smoking_cessation</td><td style=text-align:left>27017</td></tr><tr><td style=text-align:left>smoking-app-user</td><td style=text-align:left>t4g.small</td><td style=text-align:left>User Cessation App</td><td style=text-align:left>(PostgreSQL)</td><td style=text-align:left>8000</td></tr><tr><td style=text-align:left>smoking-app-social</td><td style=text-align:left>t4g.small</td><td style=text-align:left>Social Media App</td><td style=text-align:left>(MongoDB)</td><td style=text-align:left>8000</td></tr></tbody></table><hr><h2 id=phần-1-create-security-groups>Phần 1: Create Security Groups</h2><h3 id=bước-1-create-database-security-group>Bước 1: Create Database Security Group</h3><ol><li>EC2 Console</li><li>Left menu: &ldquo;Security Groups&rdquo;</li><li>Click &ldquo;Create security group&rdquo;</li><li><strong>Name</strong>: <code>smoking-db-sg</code></li><li><strong>Description</strong>: Security group for database servers</li><li><strong>VPC</strong>: Default VPC (or your VPC)</li><li>Click &ldquo;Create security group&rdquo;</li></ol><p><img alt="Create Security Group" src=../assets/06-create-sg.png></p><h3 id=bước-2-add-inbound-rules-for-db-sg>Bước 2: Add Inbound Rules for DB-SG</h3><ol><li>Click vào security group vừa tạo</li><li>&ldquo;Inbound rules&rdquo; → &ldquo;Edit inbound rules&rdquo;</li><li>Add these rules:<ul><li><strong>Type</strong>: PostgreSQL (5432)<ul><li><strong>Source</strong>: Custom → <code>172.0.0.0/16</code> (internal VPC CIDR)</li></ul></li><li><strong>Type</strong>: Custom TCP 27017 (MongoDB)<ul><li><strong>Source</strong>: <code>172.0.0.0/16</code></li></ul></li></ul></li><li>Click &ldquo;Save rules&rdquo;</li></ol><h3 id=bước-3-create-application-security-group>Bước 3: Create Application Security Group</h3><ol><li>Click &ldquo;Create security group&rdquo;</li><li><strong>Name</strong>: <code>smoking-app-sg</code></li><li><strong>Description</strong>: Security group for application servers</li><li>Click &ldquo;Create security group&rdquo;</li></ol><h3 id=bước-4-add-inbound-rules-for-app-sg>Bước 4: Add Inbound Rules for App-SG</h3><ol><li>Click vào security group vừa tạo</li><li>&ldquo;Inbound rules&rdquo; → &ldquo;Edit inbound rules&rdquo;</li><li>Add rules:<ul><li><strong>Type</strong>: SSH (22)<ul><li><strong>Source</strong>: My IP (hoặc <code>0.0.0.0/0</code> nếu không có fixed IP)</li></ul></li><li><strong>Type</strong>: Custom TCP 8000 (application)<ul><li><strong>Source</strong>: <code>0.0.0.0/0</code> (or restrict to NLB later)</li></ul></li></ul></li><li>Click &ldquo;Save rules&rdquo;</li></ol><h3 id=bước-5-add-outbound-rules>Bước 5: Add Outbound Rules</h3><ol><li>&ldquo;Outbound rules&rdquo; → &ldquo;Edit outbound rules&rdquo;</li><li>Verify:<ul><li>All traffic to <code>smoking-db-sg</code> (for database access)</li><li>All traffic to internet (for package downloads)</li></ul></li><li>Default rule should allow this</li><li>Click &ldquo;Save rules&rdquo;</li></ol><hr><h2 id=phần-2-create-ec2-instances>Phần 2: Create EC2 Instances</h2><h3 id=bước-1-launch-first-instance-postgresql>Bước 1: Launch First Instance (PostgreSQL)</h3><ol><li>EC2 Console</li><li>Click &ldquo;Launch Instances&rdquo;</li><li><strong>Name</strong>: <code>smoking-db-pg</code></li><li><strong>AMI</strong>: Amazon Linux 2023 (free tier eligible)</li><li><strong>Instance type</strong>: t4g.small</li><li><strong>Keypair</strong>: Create new or select existing<ul><li><strong>Key pair name</strong>: <code>smoking-cessation-key</code></li><li>Click &ldquo;Create key pair&rdquo;</li><li>Download & save securely</li></ul></li><li>Click &ldquo;Next&rdquo;</li></ol><p><img alt="Launch Instance" src=../assets/06-launch-instance.png></p><h3 id=bước-2-configure-network>Bước 2: Configure Network</h3><ol><li><strong>VPC</strong>: Default VPC (or your VPC)</li><li><strong>Subnet</strong>: Any (or specific subnet in us-southeast-1a)</li><li><strong>Auto-assign public IP</strong>: Disable (private subnet)</li><li><strong>Security group</strong>: <code>smoking-db-sg</code></li><li>Click &ldquo;Next&rdquo;</li></ol><h3 id=bước-3-configure-storage>Bước 3: Configure Storage</h3><ol><li><strong>Size</strong>: 30 GB (enough for databases)</li><li><strong>Volume type</strong>: gp3 (general purpose, cost-effective)</li><li><strong>Delete on termination</strong>: ✅</li><li>Click &ldquo;Next&rdquo;</li></ol><h3 id=bước-4-add-tags>Bước 4: Add Tags</h3><ol><li><strong>Tag key</strong>: Name</li><li><strong>Tag value</strong>: <code>smoking-db-pg</code></li><li>Click &ldquo;Launch instance&rdquo;</li></ol><p>⏳ <strong>Chờ instance được tạo (2-3 phút)</strong></p><h3 id=bước-5-note-private-ip-address>Bước 5: Note Private IP Address</h3><ol><li>Wait for instance status &ldquo;running&rdquo;</li><li>Copy <strong>Private IPv4 address</strong> (e.g., 172.0.8.55)</li><li>Save for later: <code>PG_HOST=172.0.8.55</code></li></ol><p><img alt="Instance IP" src=../assets/06-instance-ip.png></p><h3 id=bước-6-create-mongodb-instance-same-steps>Bước 6: Create MongoDB Instance (Same Steps)</h3><ol><li>Click &ldquo;Launch Instances&rdquo;</li><li><strong>Name</strong>: <code>smoking-db-mongo</code></li><li>Same configuration as PostgreSQL</li><li><strong>Security group</strong>: <code>smoking-db-sg</code></li><li>Launch instance</li><li>Note IP address: <code>MONGO_HOST=&lt;ip></code></li></ol><h3 id=bước-7-create-application-instances>Bước 7: Create Application Instances</h3><ol><li><p>Launch instance: <code>smoking-app-user</code></p><ul><li><strong>Security group</strong>: <code>smoking-app-sg</code></li><li>Note IP: <code>APP_USER_HOST=&lt;ip></code></li></ul></li><li><p>Launch instance: <code>smoking-app-social</code></p><ul><li><strong>Security group</strong>: <code>smoking-app-sg</code></li><li>Note IP: <code>APP_SOCIAL_HOST=&lt;ip></code></li></ul></li></ol><p>All 4 instances should now be running.</p><hr><h2 id=phần-3-setup-postgresql-on-db-pg-instance>Phần 3: Setup PostgreSQL on DB-PG Instance</h2><h3 id=bước-1-connect-to-instance>Bước 1: Connect to Instance</h3><p>Using AWS Session Manager (recommended) or SSH:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Via SSH (if you have keypair)</span>
+</span></span><span style=display:flex><span>ssh -i smoking-cessation-key.pem ec2-user@&lt;PRIVATE_IP&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Or use Session Manager in EC2 Console</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Click instance → Connect → Session Manager → Connect</span>
+</span></span></code></pre></div><h3 id=bước-2-update-system>Bước 2: Update System</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo yum update -y
+</span></span><span style=display:flex><span>sudo yum upgrade -y
+</span></span></code></pre></div><h3 id=bước-3-install-postgresql>Bước 3: Install PostgreSQL</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Add PostgreSQL repository</span>
+</span></span><span style=display:flex><span>sudo tee /etc/yum.repos.d/pgdg.repo &gt; /dev/null <span style=color:#e6db74>&lt;&lt;EOF
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>[pgdg15]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>name=PostgreSQL 15 for RHEL/CentOS 9 - x86_64
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>baseurl=https://download.postgresql.org/pub/repos/yum/15/rhel/rhel-9-x86_64
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>enabled=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gpgcheck=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gpgkey=https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install PostgreSQL</span>
+</span></span><span style=display:flex><span>sudo yum install -y postgresql15-server postgresql15-contrib
+</span></span></code></pre></div><h3 id=bước-4-initialize-database-cluster>Bước 4: Initialize Database Cluster</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Initialize cluster</span>
+</span></span><span style=display:flex><span>sudo /usr/pgsql-15/bin/initdb -D /var/lib/pgsql/15/data
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create system user if needed</span>
+</span></span><span style=display:flex><span>sudo useradd postgres <span style=color:#f92672>||</span> true
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Change permissions</span>
+</span></span><span style=display:flex><span>sudo chown -R postgres:postgres /var/lib/pgsql/15/data
+</span></span></code></pre></div><h3 id=bước-5-start-postgresql-service>Bước 5: Start PostgreSQL Service</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Enable service to start on boot</span>
+</span></span><span style=display:flex><span>sudo systemctl enable postgresql-15
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Start service</span>
+</span></span><span style=display:flex><span>sudo systemctl start postgresql-15
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Verify status</span>
+</span></span><span style=display:flex><span>sudo systemctl status postgresql-15
+</span></span></code></pre></div><h3 id=bước-6-configure-postgresql-for-network-access>Bước 6: Configure PostgreSQL for Network Access</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Edit config file</span>
+</span></span><span style=display:flex><span>sudo nano /var/lib/pgsql/15/data/postgresql.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Find and change these lines:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># listen_addresses = &#39;localhost&#39;  → listen_addresses = &#39;*&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># port = 5432  → keep as is</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Save: Ctrl+O, Enter, Ctrl+X</span>
+</span></span></code></pre></div><h3 id=bước-7-configure-client-authentication>Bước 7: Configure Client Authentication</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Edit pg_hba.conf</span>
+</span></span><span style=display:flex><span>sudo nano /var/lib/pgsql/15/data/pg_hba.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Add this line at the end (before any reject lines):</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># host    all             all             172.0.0.0/16            md5</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># This allows connections from VPC CIDR 172.0.0.0/16</span>
+</span></span></code></pre></div><h3 id=bước-8-restart-postgresql>Bước 8: Restart PostgreSQL</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo systemctl restart postgresql-15
+</span></span><span style=display:flex><span>sudo systemctl status postgresql-15
+</span></span></code></pre></div><h3 id=bước-9-create-smoking_cessation-database>Bước 9: Create smoking_cessation Database</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Switch to postgres user</span>
+</span></span><span style=display:flex><span>sudo su - postgres
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Connect to psql</span>
+</span></span><span style=display:flex><span>psql
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create database</span>
+</span></span><span style=display:flex><span>CREATE DATABASE smoking_cessation;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create application user</span>
+</span></span><span style=display:flex><span>CREATE USER app_user WITH PASSWORD <span style=color:#e6db74>&#39;YourSecurePassword123!&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Grant privileges</span>
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON DATABASE smoking_cessation TO app_user;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Connect to database</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>\c</span> smoking_cessation
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Grant schema privileges</span>
+</span></span><span style=display:flex><span>GRANT ALL ON SCHEMA public TO app_user;
+</span></span><span style=display:flex><span>GRANT ALL ON ALL TABLES IN SCHEMA public TO app_user;
+</span></span><span style=display:flex><span>GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO app_user;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Verify</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>\d</span>u  <span style=color:#75715e># List users</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>\l</span>   <span style=color:#75715e># List databases</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Exit</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>\q</span>
+</span></span><span style=display:flex><span>exit
+</span></span></code></pre></div><h3 id=bước-10-verify-postgresql-is-listening>Bước 10: Verify PostgreSQL is Listening</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Check if listening on port 5432</span>
+</span></span><span style=display:flex><span>sudo netstat -tlnp | grep <span style=color:#ae81ff>5432</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Or use ss command</span>
+</span></span><span style=display:flex><span>sudo ss -tlnp | grep <span style=color:#ae81ff>5432</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Output should show: LISTEN ... 0.0.0.0:5432 or :::5432</span>
+</span></span></code></pre></div><hr><h2 id=phần-4-setup-mongodb-on-db-mongo-instance>Phần 4: Setup MongoDB on DB-Mongo Instance</h2><h3 id=bước-1-connect-to-instance-1>Bước 1: Connect to Instance</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh -i smoking-cessation-key.pem ec2-user@&lt;MONGO_PRIVATE_IP&gt;
+</span></span><span style=display:flex><span><span style=color:#75715e># Or use Session Manager</span>
+</span></span></code></pre></div><h3 id=bước-2-update-system-1>Bước 2: Update System</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo yum update -y
+</span></span><span style=display:flex><span>sudo yum upgrade -y
+</span></span></code></pre></div><h3 id=bước-3-install-mongodb>Bước 3: Install MongoDB</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create MongoDB repository</span>
+</span></span><span style=display:flex><span>sudo tee /etc/yum.repos.d/mongodb-org.repo &gt; /dev/null <span style=color:#e6db74>&lt;&lt;EOF
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>[mongodb-org-7.0]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>name=MongoDB Repository
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>baseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/7.0/x86_64/
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gpgcheck=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>enabled=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install MongoDB</span>
+</span></span><span style=display:flex><span>sudo yum install -y mongodb-org
+</span></span></code></pre></div><h3 id=bước-4-configure-mongodb-for-network-access>Bước 4: Configure MongoDB for Network Access</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Edit MongoDB config</span>
+</span></span><span style=display:flex><span>sudo nano /etc/mongod.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Find these sections and modify:</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># network:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   port: 27017</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   bindIp: localhost  → Change to bindIp: 0.0.0.0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Save: Ctrl+O, Enter, Ctrl+X</span>
+</span></span></code></pre></div><h3 id=bước-5-start-mongodb-service>Bước 5: Start MongoDB Service</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Enable service to start on boot</span>
+</span></span><span style=display:flex><span>sudo systemctl enable mongod
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Start service</span>
+</span></span><span style=display:flex><span>sudo systemctl start mongod
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Verify status</span>
+</span></span><span style=display:flex><span>sudo systemctl status mongod
+</span></span></code></pre></div><h3 id=bước-6-create-mongodb-database--user>Bước 6: Create MongoDB Database & User</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Connect to MongoDB</span>
+</span></span><span style=display:flex><span>mongosh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Switch to admin database</span>
+</span></span><span style=display:flex><span>use admin
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create admin user</span>
+</span></span><span style=display:flex><span>db.createUser<span style=color:#f92672>({</span>
+</span></span><span style=display:flex><span>  user: <span style=color:#e6db74>&#34;admin&#34;</span>,
+</span></span><span style=display:flex><span>  pwd: <span style=color:#e6db74>&#34;YourAdminPassword123!&#34;</span>,
+</span></span><span style=display:flex><span>  roles: <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;root&#34;</span><span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>})</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Exit mongosh</span>
+</span></span><span style=display:flex><span>exit
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Restart with authentication</span>
+</span></span><span style=display:flex><span>sudo nano /etc/mongod.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Find security section and uncomment:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># security:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   authorization: enabled</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Save and restart</span>
+</span></span><span style=display:flex><span>sudo systemctl restart mongod
+</span></span></code></pre></div><h3 id=bước-7-create-application-database--user>Bước 7: Create Application Database & User</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Connect with authentication</span>
+</span></span><span style=display:flex><span>mongosh -u admin -p YourAdminPassword123!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Switch to smoking_cessation database</span>
+</span></span><span style=display:flex><span>use smoking_cessation
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create application user</span>
+</span></span><span style=display:flex><span>db.createUser<span style=color:#f92672>({</span>
+</span></span><span style=display:flex><span>  user: <span style=color:#e6db74>&#34;app_user&#34;</span>,
+</span></span><span style=display:flex><span>  pwd: <span style=color:#e6db74>&#34;AppPassword123!&#34;</span>,
+</span></span><span style=display:flex><span>  roles: <span style=color:#f92672>[{</span>role: <span style=color:#e6db74>&#34;readWrite&#34;</span>, db: <span style=color:#e6db74>&#34;smoking_cessation&#34;</span><span style=color:#f92672>}]</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>})</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Verify user created</span>
+</span></span><span style=display:flex><span>show users
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Exit</span>
+</span></span><span style=display:flex><span>exit
+</span></span></code></pre></div><h3 id=bước-8-verify-mongodb-is-listening>Bước 8: Verify MongoDB is Listening</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Check if listening on port 27017</span>
+</span></span><span style=display:flex><span>sudo netstat -tlnp | grep <span style=color:#ae81ff>27017</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Or</span>
+</span></span><span style=display:flex><span>sudo ss -tlnp | grep <span style=color:#ae81ff>27017</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Output should show LISTEN on port 27017</span>
+</span></span></code></pre></div><hr><h2 id=phần-5-test-database-connectivity>Phần 5: Test Database Connectivity</h2><h3 id=bước-1-test-postgresql-from-app-instance>Bước 1: Test PostgreSQL from App Instance</h3><p>Connect to application instance:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh -i smoking-cessation-key.pem ec2-user@&lt;APP_USER_HOST&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install PostgreSQL client</span>
+</span></span><span style=display:flex><span>sudo yum install -y postgresql15
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test connection to PostgreSQL</span>
+</span></span><span style=display:flex><span>psql -h &lt;PG_HOST_IP&gt; -U app_user -d smoking_cessation -c <span style=color:#e6db74>&#34;SELECT 1&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Expected output: Should show &#34;1&#34; (success)</span>
+</span></span></code></pre></div><h3 id=bước-2-test-mongodb-from-app-instance>Bước 2: Test MongoDB from App Instance</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Install MongoDB tools</span>
+</span></span><span style=display:flex><span>sudo yum install -y mongodb-mongosh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test connection to MongoDB</span>
+</span></span><span style=display:flex><span>mongosh --host &lt;MONGO_HOST_IP&gt;:27017 --username app_user --password AppPassword123! --authenticationDatabase smoking_cessation --eval <span style=color:#e6db74>&#34;db.adminCommand(&#39;ping&#39;)&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Expected output: { ok: 1 }</span>
+</span></span></code></pre></div><h3 id=bước-3-test-inter-instance-ping>Bước 3: Test Inter-Instance Ping</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># From any instance, test network connectivity</span>
+</span></span><span style=display:flex><span>ping -c <span style=color:#ae81ff>3</span> &lt;TARGET_IP&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Expected: Low latency (&lt; 5ms in same VPC)</span>
+</span></span></code></pre></div><hr><h2 id=phần-6-create-database-tables-postgresql>Phần 6: Create Database Tables (PostgreSQL)</h2><h3 id=bước-1-connect-to-database>Bước 1: Connect to Database</h3><p>From app instance or via psql:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Connect to smoking_cessation database</span>
+</span></span><span style=display:flex><span>psql -h &lt;PG_HOST_IP&gt; -U app_user -d smoking_cessation
+</span></span></code></pre></div><h3 id=bước-2-create-tables>Bước 2: Create Tables</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#75715e>-- Create users table
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> users (
+</span></span><span style=display:flex><span>  id UUID <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> <span style=color:#66d9ef>DEFAULT</span> gen_random_uuid(),
+</span></span><span style=display:flex><span>  cognito_id VARCHAR(<span style=color:#ae81ff>255</span>) <span style=color:#66d9ef>UNIQUE</span> <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
+</span></span><span style=display:flex><span>  email VARCHAR(<span style=color:#ae81ff>255</span>) <span style=color:#66d9ef>UNIQUE</span> <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
+</span></span><span style=display:flex><span>  name VARCHAR(<span style=color:#ae81ff>255</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>role</span> VARCHAR(<span style=color:#ae81ff>50</span>) <span style=color:#66d9ef>DEFAULT</span> <span style=color:#e6db74>&#39;user&#39;</span>,
+</span></span><span style=display:flex><span>  created_at <span style=color:#66d9ef>TIMESTAMP</span> <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>,
+</span></span><span style=display:flex><span>  updated_at <span style=color:#66d9ef>TIMESTAMP</span> <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>
+</span></span><span style=display:flex><span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>-- Create coaches table
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> coaches (
+</span></span><span style=display:flex><span>  id UUID <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> <span style=color:#66d9ef>DEFAULT</span> gen_random_uuid(),
+</span></span><span style=display:flex><span>  user_id UUID <span style=color:#66d9ef>REFERENCES</span> users(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>CASCADE</span>,
+</span></span><span style=display:flex><span>  specialization VARCHAR(<span style=color:#ae81ff>255</span>),
+</span></span><span style=display:flex><span>  bio TEXT,
+</span></span><span style=display:flex><span>  hourly_rate DECIMAL(<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>2</span>),
+</span></span><span style=display:flex><span>  created_at <span style=color:#66d9ef>TIMESTAMP</span> <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>
+</span></span><span style=display:flex><span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>-- Create coaching_sessions table
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> coaching_sessions (
+</span></span><span style=display:flex><span>  id UUID <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> <span style=color:#66d9ef>DEFAULT</span> gen_random_uuid(),
+</span></span><span style=display:flex><span>  user_id UUID <span style=color:#66d9ef>REFERENCES</span> users(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>CASCADE</span>,
+</span></span><span style=display:flex><span>  coach_id UUID <span style=color:#66d9ef>REFERENCES</span> coaches(id) <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>DELETE</span> <span style=color:#66d9ef>SET</span> <span style=color:#66d9ef>NULL</span>,
+</span></span><span style=display:flex><span>  status VARCHAR(<span style=color:#ae81ff>50</span>) <span style=color:#66d9ef>DEFAULT</span> <span style=color:#e6db74>&#39;active&#39;</span>,
+</span></span><span style=display:flex><span>  started_at <span style=color:#66d9ef>TIMESTAMP</span>,
+</span></span><span style=display:flex><span>  ended_at <span style=color:#66d9ef>TIMESTAMP</span>,
+</span></span><span style=display:flex><span>  created_at <span style=color:#66d9ef>TIMESTAMP</span> <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>CURRENT_TIMESTAMP</span>
+</span></span><span style=display:flex><span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>-- Create indexes for performance
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> idx_users_cognito_id <span style=color:#66d9ef>ON</span> users(cognito_id);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> idx_users_email <span style=color:#66d9ef>ON</span> users(email);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> idx_coaches_user_id <span style=color:#66d9ef>ON</span> coaches(user_id);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> idx_sessions_user_id <span style=color:#66d9ef>ON</span> coaching_sessions(user_id);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>INDEX</span> idx_sessions_coach_id <span style=color:#66d9ef>ON</span> coaching_sessions(coach_id);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>-- Grant permissions to app_user
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>GRANT</span> <span style=color:#66d9ef>ALL</span> <span style=color:#66d9ef>PRIVILEGES</span> <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>ALL</span> TABLES <span style=color:#66d9ef>IN</span> <span style=color:#66d9ef>SCHEMA</span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>TO</span> app_user;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>GRANT</span> <span style=color:#66d9ef>ALL</span> <span style=color:#66d9ef>PRIVILEGES</span> <span style=color:#66d9ef>ON</span> <span style=color:#66d9ef>ALL</span> SEQUENCES <span style=color:#66d9ef>IN</span> <span style=color:#66d9ef>SCHEMA</span> <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>TO</span> app_user;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>-- Verify tables
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#960050;background-color:#1e0010>\</span>dt
+</span></span></code></pre></div><h3 id=bước-3-exit-psql>Bước 3: Exit psql</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>\</span>q
+</span></span></code></pre></div><hr><h2 id=phần-7-setup-application-servers-ec2-instances>Phần 7: Setup Application Servers (EC2 Instances)</h2><h3 id=bước-1-connect-to-application-instance>Bước 1: Connect to Application Instance</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh -i smoking-cessation-key.pem ec2-user@&lt;APP_USER_HOST&gt;
+</span></span></code></pre></div><h3 id=bước-2-install-nodejs--npm>Bước 2: Install Node.js & npm</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Update system</span>
+</span></span><span style=display:flex><span>sudo yum update -y
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install Node.js (Amazon Linux version)</span>
+</span></span><span style=display:flex><span>curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
+</span></span><span style=display:flex><span>sudo yum install -y nodejs
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Verify installation</span>
+</span></span><span style=display:flex><span>node --version
+</span></span><span style=display:flex><span>npm --version
+</span></span></code></pre></div><h3 id=bước-3-create-application-directory>Bước 3: Create Application Directory</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create app directory</span>
+</span></span><span style=display:flex><span>sudo mkdir -p /opt/smoking-cessation
+</span></span><span style=display:flex><span>sudo chown -R ec2-user:ec2-user /opt/smoking-cessation
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Change to directory</span>
+</span></span><span style=display:flex><span>cd /opt/smoking-cessation
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create basic package.json</span>
+</span></span><span style=display:flex><span>cat &gt; package.json <span style=color:#e6db74>&lt;&lt; &#39;EOF&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>{
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;name&#34;: &#34;smoking-cessation-app&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;version&#34;: &#34;1.0.0&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;description&#34;: &#34;Smoking cessation user app&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;main&#34;: &#34;server.js&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;scripts&#34;: {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;start&#34;: &#34;node server.js&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;dev&#34;: &#34;nodemon server.js&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  },
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  &#34;dependencies&#34;: {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;express&#34;: &#34;^4.18.2&#34;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;pg&#34;: &#34;^8.10.0&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install dependencies</span>
+</span></span><span style=display:flex><span>npm install
+</span></span></code></pre></div><h3 id=bước-4-create-basic-express-server>Bước 4: Create Basic Express Server</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create server.js</span>
+</span></span><span style=display:flex><span>cat &gt; server.js <span style=color:#e6db74>&lt;&lt; &#39;EOF&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>const express = require(&#39;express&#39;);
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>const { Pool } = require(&#39;pg&#39;);
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>const app = express();
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>const port = 8000;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>// Database connection pool
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>const pool = new Pool({
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  user: &#39;app_user&#39;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  password: process.env.DB_PASSWORD || &#39;AppPassword123!&#39;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  host: process.env.DB_HOST || &#39;localhost&#39;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  port: 5432,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  database: &#39;smoking_cessation&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>});
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>app.use(express.json());
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>// Health check endpoint
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>app.get(&#39;/health&#39;, (req, res) =&gt; {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  res.json({ status: &#39;ok&#39;, service: &#39;user-app&#39; });
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>});
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>// Test database connection
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>app.get(&#39;/db-test&#39;, async (req, res) =&gt; {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  try {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    const result = await pool.query(&#39;SELECT NOW()&#39;);
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    res.json({ message: &#39;Database connected&#39;, time: result.rows[0] });
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  } catch (error) {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    res.status(500).json({ error: error.message });
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>});
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>app.listen(port, () =&gt; {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  console.log(`App listening on port ${port}`);
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>});
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span></code></pre></div><h3 id=bước-5-test-application>Bước 5: Test Application</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Start server</span>
+</span></span><span style=display:flex><span>node server.js
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># In another terminal, test endpoints</span>
+</span></span><span style=display:flex><span>curl http://localhost:8000/health
+</span></span><span style=display:flex><span>curl http://localhost:8000/db-test
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Ctrl+C to stop</span>
+</span></span></code></pre></div><h3 id=bước-6-create-systemd-service-optional>Bước 6: Create Systemd Service (Optional)</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create service file</span>
+</span></span><span style=display:flex><span>sudo tee /etc/systemd/system/smoking-app.service &gt; /dev/null <span style=color:#e6db74>&lt;&lt;EOF
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>[Unit]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>Description=Smoking Cessation Application
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>After=network.target
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>[Service]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>Type=simple
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>User=ec2-user
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>WorkingDirectory=/opt/smoking-cessation
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>ExecStart=/usr/bin/node server.js
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>Restart=on-failure
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>RestartSec=10
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>[Install]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>WantedBy=multi-user.target
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Enable and start service</span>
+</span></span><span style=display:flex><span>sudo systemctl daemon-reload
+</span></span><span style=display:flex><span>sudo systemctl enable smoking-app
+</span></span><span style=display:flex><span>sudo systemctl start smoking-app
+</span></span><span style=display:flex><span>sudo systemctl status smoking-app
+</span></span></code></pre></div><hr><h2 id=phần-8-setup-monitoring--cloudwatch>Phần 8: Setup Monitoring & CloudWatch</h2><h3 id=bước-1-enable-detailed-monitoring>Bước 1: Enable Detailed Monitoring</h3><ol><li>EC2 Console</li><li>Select each instance</li><li>Right-click → &ldquo;Monitoring and troubleshooting&rdquo;</li><li>Click &ldquo;Enable detailed monitoring&rdquo;</li></ol><p>This provides 1-minute metrics instead of default 5-minute.</p><h3 id=bước-2-create-cloudwatch-alarms>Bước 2: Create CloudWatch Alarms</h3><p>For high CPU on database instances:</p><ol><li>CloudWatch Console</li><li>&ldquo;Alarms&rdquo; → &ldquo;Create alarm&rdquo;</li><li><strong>Metric</strong>:<ul><li>Namespace: AWS/EC2</li><li>Metric: CPUUtilization</li><li>Dimension: Instance ID (select DB-PG)</li></ul></li><li><strong>Conditions</strong>:<ul><li>Statistic: Average</li><li>Period: 5 minutes</li><li>Threshold: > 80%</li></ul></li><li><strong>Notification</strong>: Create SNS topic for alerts</li><li>Click &ldquo;Create alarm&rdquo;</li></ol><p>Repeat for all instances.</p><h3 id=bước-3-create-dashboard>Bước 3: Create Dashboard</h3><ol><li>CloudWatch → Dashboards</li><li>&ldquo;Create dashboard&rdquo;</li><li><strong>Name</strong>: <code>smoking-cessation-infrastructure</code></li><li>Add widgets:<ul><li>EC2 CPU Utilization (all instances)</li><li>Network In/Out</li><li>Disk usage (if CloudWatch agent installed)</li></ul></li><li>Click &ldquo;Create dashboard&rdquo;</li></ol><hr><h2 id=phần-9-setup-database-backups>Phần 9: Setup Database Backups</h2><h3 id=bước-1-create-backup-directory>Bước 1: Create Backup Directory</h3><p>On each database instance:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create backup directory</span>
+</span></span><span style=display:flex><span>sudo mkdir -p /backups
+</span></span><span style=display:flex><span>sudo chown -R postgres:postgres /backups  <span style=color:#75715e># For PostgreSQL</span>
+</span></span></code></pre></div><h3 id=bước-2-postgresql-automated-backup>Bước 2: PostgreSQL Automated Backup</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Connect as ec2-user</span>
+</span></span><span style=display:flex><span>ssh -i smoking-cessation-key.pem ec2-user@&lt;PG_HOST&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create backup script</span>
+</span></span><span style=display:flex><span>cat &gt; ~/backup-pg.sh <span style=color:#e6db74>&lt;&lt; &#39;EOF&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>BACKUP_DIR=&#34;/backups&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>BACKUP_FILE=&#34;$BACKUP_DIR/smoking_cessation_$TIMESTAMP.sql&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>sudo -u postgres pg_dump -d smoking_cessation -h localhost &gt; &#34;$BACKUP_FILE&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># Keep only last 7 days of backups
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>find $BACKUP_DIR -name &#34;smoking_cessation_*.sql&#34; -mtime +7 -delete
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>echo &#34;Backup completed: $BACKUP_FILE&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Make executable</span>
+</span></span><span style=display:flex><span>chmod +x ~/backup-pg.sh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test backup</span>
+</span></span><span style=display:flex><span>./backup-pg.sh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Add to crontab for daily backups at 3 AM</span>
+</span></span><span style=display:flex><span>crontab -e
+</span></span><span style=display:flex><span><span style=color:#75715e># Add: 0 3 * * * /home/ec2-user/backup-pg.sh &gt;&gt; /var/log/postgres-backup.log 2&gt;&amp;1</span>
+</span></span></code></pre></div><h3 id=bước-3-mongodb-automated-backup>Bước 3: MongoDB Automated Backup</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Connect as ec2-user</span>
+</span></span><span style=display:flex><span>ssh -i smoking-cessation-key.pem ec2-user@&lt;MONGO_HOST&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create backup script</span>
+</span></span><span style=display:flex><span>cat &gt; ~/backup-mongo.sh <span style=color:#e6db74>&lt;&lt; &#39;EOF&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>BACKUP_DIR=&#34;/backups&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>BACKUP_PATH=&#34;$BACKUP_DIR/smoking_cessation_$TIMESTAMP&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>mongodump --username=admin --password=&#34;YourAdminPassword123!&#34; --db smoking_cessation --out &#34;$BACKUP_PATH&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74># Keep only last 7 days
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>find $BACKUP_DIR -maxdepth 1 -type d -mtime +7 -exec rm -rf {} \;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>echo &#34;MongoDB backup completed: $BACKUP_PATH&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Make executable</span>
+</span></span><span style=display:flex><span>chmod +x ~/backup-mongo.sh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test backup</span>
+</span></span><span style=display:flex><span>./backup-mongo.sh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Add to crontab for daily backups at 4 AM</span>
+</span></span><span style=display:flex><span>crontab -e
+</span></span><span style=display:flex><span><span style=color:#75715e># Add: 0 4 * * * /home/ec2-user/backup-mongo.sh &gt;&gt; /var/log/mongo-backup.log 2&gt;&amp;1</span>
+</span></span></code></pre></div><h3 id=bước-4-upload-backups-to-s3-optional>Bước 4: Upload Backups to S3 (Optional)</h3><p>To backup off-instance (safer):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Configure AWS CLI on instance (requires IAM role)</span>
+</span></span><span style=display:flex><span>aws configure
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Modify backup scripts to upload to S3:</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># aws s3 cp $BACKUP_FILE s3://smoking-cessation-backups/</span>
+</span></span></code></pre></div><hr><h2 id=environment-variables-summary>Environment Variables Summary</h2><p>Save these for Lambda functions & applications:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-env data-lang=env><span style=display:flex><span><span style=color:#75715e># PostgreSQL</span>
+</span></span><span style=display:flex><span>PG_HOST<span style=color:#f92672>=</span>&lt;DB-PG_PRIVATE_IP&gt;
+</span></span><span style=display:flex><span>PG_USER<span style=color:#f92672>=</span>app_user
+</span></span><span style=display:flex><span>PG_PASSWORD<span style=color:#f92672>=</span>AppPassword123!
+</span></span><span style=display:flex><span>PG_DATABASE<span style=color:#f92672>=</span>smoking_cessation
+</span></span><span style=display:flex><span>PG_PORT<span style=color:#f92672>=</span><span style=color:#ae81ff>5432</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># MongoDB</span>
+</span></span><span style=display:flex><span>MONGO_HOST<span style=color:#f92672>=</span>&lt;DB-Mongo_PRIVATE_IP&gt;
+</span></span><span style=display:flex><span>MONGO_USERNAME<span style=color:#f92672>=</span>app_user
+</span></span><span style=display:flex><span>MONGO_PASSWORD<span style=color:#f92672>=</span>AppPassword123!
+</span></span><span style=display:flex><span>MONGO_DATABASE<span style=color:#f92672>=</span>smoking_cessation
+</span></span><span style=display:flex><span>MONGO_PORT<span style=color:#f92672>=</span><span style=color:#ae81ff>27017</span>
+</span></span><span style=display:flex><span>MONGO_URI<span style=color:#f92672>=</span>mongodb://app_user:AppPassword123!@&lt;MONGO_HOST&gt;:27017/smoking_cessation
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Application Instances</span>
+</span></span><span style=display:flex><span>APP_USER_HOST<span style=color:#f92672>=</span>&lt;APP_USER_PRIVATE_IP&gt;
+</span></span><span style=display:flex><span>APP_SOCIAL_HOST<span style=color:#f92672>=</span>&lt;APP_SOCIAL_PRIVATE_IP&gt;
+</span></span></code></pre></div><hr><h2 id=checklist>Checklist</h2><ul><li><input disabled type=checkbox> 4 EC2 instances launched (DB-PG, DB-Mongo, App-User, App-Social)</li><li><input disabled type=checkbox> Security groups created with proper inbound/outbound rules</li><li><input disabled type=checkbox> PostgreSQL installed, configured, and accessible</li><li><input disabled type=checkbox> MongoDB installed, configured, and accessible</li><li><input disabled type=checkbox> smoking_cessation database created in both databases</li><li><input disabled type=checkbox> Application users created with proper permissions</li><li><input disabled type=checkbox> Database tables created (users, coaches, sessions)</li><li><input disabled type=checkbox> Application instances can connect to databases</li><li><input disabled type=checkbox> Inter-instance connectivity tested (ping, port access)</li><li><input disabled type=checkbox> Node.js & npm installed on app instances</li><li><input disabled type=checkbox> Express server created and tested</li><li><input disabled type=checkbox> CloudWatch detailed monitoring enabled</li><li><input disabled type=checkbox> CloudWatch alarms configured for high CPU</li><li><input disabled type=checkbox> CloudWatch dashboard created</li><li><input disabled type=checkbox> Database backup scripts created and tested</li><li><input disabled type=checkbox> Backup scripts added to crontab</li><li><input disabled type=checkbox> All database credentials saved securely</li><li><input disabled type=checkbox> Sẵn sàng cho Module 7 (Create S3 & CloudFront)</li></ul><hr><h2 id=troubleshooting>Troubleshooting</h2><h3 id=cannot-connect-to-postgresql>Cannot Connect to PostgreSQL</h3><p><strong>Issue</strong>: Connection refused on port 5432</p><p><strong>Solution</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Check PostgreSQL is running</span>
+</span></span><span style=display:flex><span>sudo systemctl status postgresql-15
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check listening on port 5432</span>
+</span></span><span style=display:flex><span>sudo netstat -tlnp | grep <span style=color:#ae81ff>5432</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check security group rules allow 5432</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># From app instance, verify: telnet &lt;PG_HOST&gt; 5432</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check pg_hba.conf allows VPC CIDR</span>
+</span></span><span style=display:flex><span>sudo nano /var/lib/pgsql/15/data/pg_hba.conf
+</span></span></code></pre></div><h3 id=cannot-connect-to-mongodb>Cannot Connect to MongoDB</h3><p><strong>Issue</strong>: Connection refused on port 27017</p><p><strong>Solution</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Check MongoDB is running</span>
+</span></span><span style=display:flex><span>sudo systemctl status mongod
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check port listening</span>
+</span></span><span style=display:flex><span>sudo netstat -tlnp | grep <span style=color:#ae81ff>27017</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check mongod.conf bindIp is correct</span>
+</span></span><span style=display:flex><span>sudo nano /etc/mongod.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Verify authentication enabled correctly</span>
+</span></span><span style=display:flex><span>mongosh -u admin -p &lt;password&gt;
+</span></span></code></pre></div><h3 id=network-connectivity-issues>Network Connectivity Issues</h3><p><strong>Issue</strong>: Instances cannot ping each other</p><p><strong>Solution</strong>:</p><ol><li>Verify all instances are in same VPC</li><li>Check security group rules allow traffic between groups</li><li>Check Network ACLs don&rsquo;t block traffic</li><li>Verify instances have route table entries</li></ol><h3 id=high-cpu-on-database-instance>High CPU on Database Instance</h3><p><strong>Issue</strong>: CPU Utilization > 80%</p><p><strong>Solution</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Check top processes</span>
+</span></span><span style=display:flex><span>top -b -n <span style=color:#ae81ff>1</span> | head -20
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># For PostgreSQL, check long-running queries:</span>
+</span></span><span style=display:flex><span>psql -h localhost -U postgres -d smoking_cessation
+</span></span><span style=display:flex><span>SELECT pid, usename, query, query_start FROM pg_stat_activity WHERE query !<span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;autovacuum&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Consider: Scale up instance type, optimize queries, or add replication</span>
+</span></span></code></pre></div><hr><h2 id=cost-analysis>Cost Analysis</h2><p><strong>Current costs</strong> (4 × t4g.small at $0.0252/hour):</p><ul><li>Compute: ~$30/month (4 instances × 730 hours)</li><li>Storage: ~$10/month (4 × 30GB EBS volumes)</li><li>Data transfer: ~$5/month</li><li><strong>Total: ~$45/month</strong></li></ul><p><strong>Optimization options</strong>:</p><ul><li>Use Reserved Instances for 30% savings (~$31/month)</li><li>Right-size if low usage (t4g.micro: ~$10/month)</li><li>Consolidate to 2 instances if possible</li></ul><hr><h2 id=next-steps>Next Steps</h2><ol><li>Configure auto-scaling for application instances (optional)</li><li>Setup read replicas for PostgreSQL (optional)</li><li>Enable database replication for high availability (optional)</li><li>Configure point-in-time recovery (PITR) for databases (optional)</li><li>Setup monitoring alerts (Module 9)</li></ol><hr><h2 id=kết-quả-đạt-được>Kết Quả Đạt Được</h2><p>Sau Module 6, bạn sẽ có:</p><ol><li>✅ 4 EC2 instances created & running</li><li>✅ Security groups configured with proper rules</li><li>✅ PostgreSQL server setup & database created</li><li>✅ MongoDB server setup & database created</li><li>✅ Application users created in both databases</li><li>✅ Database tables created & indexed</li><li>✅ Application server configuration completed</li><li>✅ Inter-instance connectivity tested</li><li>✅ CloudWatch monitoring enabled</li><li>✅ CloudWatch alarms configured</li><li>✅ Database backup scripts setup</li><li>✅ All databases operational & accessible</li><li>✅ Sẵn sàng cho Module 7 (Create S3 & CloudFront)</li></ol><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=../../../vi/5-workshop/5.5-setup-api-gateway/ title="5.5 Setup API Gateway"><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=../../../vi/5-workshop/5.7-setup-s3-cloudfront/ title="5.7 Setup S3 + CloudFront" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=../../../js/clipboard.min.js?1765252493></script><script src=../../../js/perfect-scrollbar.min.js?1765252493></script><script src=../../../js/perfect-scrollbar.jquery.min.js?1765252493></script><script src=../../../js/jquery.sticky.js?1765252493></script><script src=../../../js/featherlight.min.js?1765252493></script><script src=../../../js/highlight.pack.js?1765252493></script><script>hljs.initHighlightingOnLoad()</script><script src=../../../js/modernizr.custom-3.6.0.js?1765252493></script><script src=../../../js/learn.js?1765252493></script><script src=../../../js/hugo-learn.js?1765252493></script><link href=../../../mermaid/mermaid.css?1765252493 rel=stylesheet><script src=../../../mermaid/mermaid.js?1765252493></script><script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,(e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date),(i=t.createElement(n),a=t.getElementsByTagName(n)[0]),i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-158079754-2","auto"),ga("send","pageview")</script></body></html>
