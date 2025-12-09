@@ -1,5 +1,5 @@
 ---
-title: "Setup VPC & Security"
+title: "5.8 Setup VPC & Security"
 date: ""
 weight: 8
 chapter: false

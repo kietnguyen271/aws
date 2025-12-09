@@ -1,5 +1,5 @@
 ---
-title: "Monitoring & Logging"
+title: "5.9 Monitoring & Logging"
 date: ""
 weight: 9
 chapter: false

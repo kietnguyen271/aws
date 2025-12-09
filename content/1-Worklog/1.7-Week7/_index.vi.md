@@ -1,9 +1,9 @@
 ---
 title: "Week 8 Worklog"
 date: ""
-weight: 1
+weight: 7
 chapter: false
-pre: " <b> 1.8. </b> "
+pre: " <b> 1.7. </b> "
 ---
 
 ### Week 8 Objectives

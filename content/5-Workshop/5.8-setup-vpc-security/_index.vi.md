@@ -1,11 +1,10 @@
 ---
-title: "Setup VPC & Security"
+title: "5.8 Setup VPC & Security"
 date: ""
 weight: 8
 chapter: false
 pre: " <b> 5.8. </b> "
 ---
-
 
 # Module 8: Create VPC, Subnets, Security Groups & NLB
 

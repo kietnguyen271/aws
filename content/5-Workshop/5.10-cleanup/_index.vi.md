@@ -1,5 +1,5 @@
 ---
-title: "Cleanup & Cost Optimization"
+title: "5.10 Cleanup & Cost Optimization"
 date: ""
 weight: 10
 chapter: false
