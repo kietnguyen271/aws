@@ -124,4 +124,4 @@ The system leverages AWS-managed services for scalability and security, as visua
 - Secure, compliant, and maintainable cloud infrastructure.
 
 ---
-[📄 Download Proposal (.docx)](/aws/Proposal.docx)
+[📄 Download Proposal (.docx)](/Proposal.docx)
