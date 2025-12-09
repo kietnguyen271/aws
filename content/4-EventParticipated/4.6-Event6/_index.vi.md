@@ -1,179 +1,93 @@
 ---
-title: "AWS Cloud Mastery Series #1"
-date: 2025-11-15
+title: "CloudThinker – Building Agentic AI & Context Optimization with Amazon Bedrock"
+date: 2025-12-05
 weight: 6
 chapter: false
 pre: " <b> 4.6. </b> "
 ---
 
-# Bào thu hoạch: “BUILDING AGENTIC AI - Context Optimization with Amazon Bedrock”
+### CloudThinker – Building Agentic AI & Context Optimization with Amazon Bedrock
 
-### Mục tiêu Sự kiện
+**- Ngày:** Thứ Sáu, 05/12/2025  
+**- Thời gian:** 9:00 AM  
+**- Địa điểm:** Tầng 26, Bitexco Financial Tower, Quận 1, TP. Hồ Chí Minh  
+**- Vai trò:** Người tham dự  
+**- Trạng thái:** Past Event (Sự kiện đã kết thúc)
 
-* Cung cấp phần giới thiệu rõ ràng về Agentic AI và sự chuyển dịch sang các hệ thống AI tự động
-* Trình bày Amazon Bedrock AgentCore cùng hệ sinh thái agentic mở rộng của AWS
-* Minh họa các ví dụ thực tế về thiết kế Agentic Workflow trên AWS
-* Làm nổi bật cách tiếp cận orchestration của CloudThinker và các phương pháp tối ưu hóa ngữ cảnh
-* Cung cấp trải nghiệm thực hành xây dựng ứng dụng dựa trên agent bằng AWS Bedrock
-* Tạo cơ hội kết nối với các chuyên gia trong cộng đồng AI và điện toán đám mây
+---
 
-### Diễn giả
+## Tổng quan sự kiện
 
-* Nguyễn Gia Hưng – Head of Solutions Architect, AWS
-* Kiên Nguyễn – Solutions Architect, AWS
-* Việt Phạm – Founder & CEO, Diaflow
-* Thắng Tôn – Co-founder & COO, CloudThinker
-* Henry Bùi – Head of Engineering, CloudThinker
-* Kha Văn – Community Leader, AWS
+Sự kiện được tổ chức bởi **CloudThinker kết hợp cùng AWS**, tập trung vào việc xây dựng hệ thống **Agentic AI**, tối ưu hóa xử lý ngữ cảnh và tăng cường khả năng tương tác của AI bằng **Amazon Bedrock**.  
+Buổi chia sẻ đi sâu vào kiến trúc thực tế, workflow vận hành, cũng như cách các doanh nghiệp có thể ứng dụng Generative AI trong các bài toán hiện đại.
 
-### Những Điểm Nổi Bật
+**Các chủ đề chính được trình bày gồm:**
 
-#### Sự Phát Triển của Agentic AI
+---
 
-**ML Truyền thống / AI Cổ điển**
+## 1. Kiến trúc Agentic AI với Amazon Bedrock
 
-* Nhiệm vụ được định nghĩa hẹp, khả năng giới hạn
-* Phụ thuộc mạnh vào dữ liệu có cấu trúc và xử lý tiền đề
-* Khó mở rộng hoặc thích nghi với các trường hợp sử dụng mới
+- Giới thiệu tổng quan về nền tảng Bedrock.  
+- Cách các foundation model (Claude, Llama, Titan) phối hợp trong agent workflow.  
+- Mô hình hoạt động của Agentic AI: planning, reasoning, tool-usage.  
+- Ứng dụng trong vận hành doanh nghiệp: tự động hóa, phân tích dữ liệu, hỗ trợ ra quyết định.
 
-**Agentic AI Hiện Đại**
+---
 
-* Được vận hành bởi Foundation Models với khả năng suy luận đa bước
-* Tự động phân rã nhiệm vụ và sử dụng công cụ
-* Tích hợp API, thực thi workflow và truy cập tri thức
-* Trở nên linh hoạt và sẵn sàng cho môi trường sản xuất khi kết hợp với AWS
+## 2. Context Optimization & Memory Layer
 
-#### Thách Thức Khi Triển Khai Agentic AI
+- Chiến lược rút gọn và tối ưu context window.  
+- Kỹ thuật duy trì “AI memory” để cải thiện tương tác dài hạn.  
+- So sánh embedding-based memory vs. long-context LLM.  
+- Demo: lưu, truy xuất và tối ưu hóa phiên làm việc với AI.
 
-* Các vấn đề hiệu năng như độ trễ, suy luận song song, thông lượng
-* Mở rộng cho multi-agent và xử lý ngữ cảnh phức tạp
-* Yêu cầu bảo mật như kiểm soát dữ liệu, luồng định danh, phân quyền truy cập
-* Nhu cầu governance như logging, khả năng truy vết, giới hạn workflow
+---
 
-#### Danh Mục Agentic AI của AWS
+## 3. RAG nâng cao (Advanced Retrieval-Augmented Generation)
 
-* Amazon Bedrock AgentCore cho identity, memory, runtime, truy cập tools và workflows
-* Agent Gateway cho tích hợp công cụ và API thống nhất
-* Hỗ trợ nhiều mô hình như Anthropic, Meta Llama, Amazon Titan và nhiều hơn nữa
-* Thiết kế hướng doanh nghiệp với guardrails, observability và khả năng mở rộng
+- Thiết kế kiến trúc RAG hiệu quả trong môi trường doanh nghiệp.  
+- Lựa chọn vector store: OpenSearch, Aurora, DynamoDB + Vector Engine.  
+- Tối ưu độ chính xác khi truy xuất tài liệu.  
+- Hạn chế hallucination trong bối cảnh thông tin chuyên sâu.
 
-#### Amazon Bedrock AgentCore
+---
 
-* Runtime để điều phối các nhiệm vụ đa bước
-* Memory cho ngữ cảnh ngắn hạn và dài hạn
-* Identity Flow để quản lý quyền và bảo mật
-* Agent Gateway để kết nối tới công cụ, API và hệ thống doanh nghiệp
-* Code Interpreter cho môi trường thực thi mã an toàn
-* Browser Tool để thu thập thông tin từ nguồn bên ngoài
-* Các tính năng quan sát gồm logs, traces và metrics
+## 4. Xây dựng Agent Workflow đa bước
 
-#### Xây Dựng Agentic Workflow trên AWS (Use Case từ Diaflow)
+- Tạo agent có khả năng:  
+  + tự phân rã nhiệm vụ,  
+  + lập kế hoạch,  
+  + gọi API,  
+  + xử lý dữ liệu phức tạp.  
+- Demo thực tế với **Bedrock Agents**.  
+- Ứng dụng: customer support, automation, data processing.
 
-* Phối hợp giữa nhiều agent
-* Truy xuất ngữ cảnh và function calling
-* Tích hợp agent với hệ thống dữ liệu doanh nghiệp
-* Thực thi logic kinh doanh bằng Bedrock và công cụ Diaflow
-* Chiến lược thiết kế thực tế phù hợp với startup và SME
+---
 
-#### Orchestration & Tối Ưu Ngữ Cảnh của CloudThinker
+## 5. Guardrails & Responsible AI
 
-* Các mô hình điều phối cấp cao cho hệ thống agent
-* Lọc ngữ cảnh để cải thiện hiệu suất mô hình
-* Workflow thích ứng thay đổi dựa trên thông tin từ agent
-* Kỹ thuật đánh giá và tăng độ tin cậy trong suy luận
-* Tích hợp workflow CloudThinker với Amazon Bedrock AgentCore
+- Triển khai Bedrock Guardrails để kiểm soát nội dung và ngăn ngừa rủi ro.  
+- Phân loại nội dung nhạy cảm và hạn chế output không an toàn.  
+- Lồng ghép Responsible AI vào quy trình phát triển.
 
-#### CloudThinker Hack: Phiên Thực Hành
+---
 
-* Thiết lập ban đầu Bedrock agents
-* Xây dựng workflow agent đơn giản
-* Thêm công cụ bên ngoài vào pipeline
-* Khắc phục lỗi và tối ưu hành vi agent
-* Triển khai bản proof-of-concept hoàn chỉnh
+## Key Takeaways & Learning Points
 
-### Những Điểm Rút Ra Quan Trọng
+- Agentic AI là xu hướng tiếp theo của GenAI, giúp AI **tự chủ hơn** và **tự động hóa quy trình phức tạp**.  
+- Bedrock cung cấp kiến trúc ổn định, bảo mật và dễ tích hợp cho doanh nghiệp muốn triển khai AI ở quy mô lớn.  
+- Context optimization và memory là yếu tố quyết định chất lượng tương tác giữa người dùng và AI.  
+- RAG nâng cao giúp AI truy xuất dữ liệu chính xác hơn và giảm hallucination.  
+- Guardrails là bắt buộc để đảm bảo hệ thống AI an toàn và tuân thủ quy định.
 
-#### Tư Duy Agentic AI
+---
 
-* AI đang chuyển từ phản hồi thụ động sang hành động tự chủ
-* Agent hiệu quả cần kết hợp memory, tools, identity và orchestration
-* Foundation Models + điều phối workflow = thế hệ ứng dụng AI tiếp theo
-* AWS hiện là một trong những môi trường sẵn sàng sản xuất mạnh mẽ nhất cho agentic AI
+## Ứng dụng vào công việc
 
-#### Hiểu Biết Kỹ Thuật
+1. **Thiết kế hệ thống ChatOps nội bộ** dùng Agentic AI để hỗ trợ tài liệu và troubleshooting.  
+2. **Tối ưu workflow AI** bằng cách sử dụng memory + RAG để giảm chi phí token và tăng chất lượng.  
+3. **Triển khai Bedrock Agents** cho automation: tạo báo cáo, phân tích dữ liệu, trả lời yêu cầu kỹ thuật.  
+4. **Nâng cao bảo mật AI** thông qua Guardrails để kiểm soát output và tuân thủ chính sách tổ chức.  
+5. **Xây dựng nền tảng AI lâu dài** dựa trên Bedrock, đảm bảo độ ổn định, tính mở rộng và hiệu suất.
 
-* Vì sao tối ưu hóa ngữ cảnh quan trọng
-* Cách công cụ và quản lý định danh ảnh hưởng đến độ tin cậy
-* Cách AgentCore đơn giản hóa reasoning đa bước
-* Vai trò của các mô hình orchestrator thực tế
-* Phương pháp kết nối mô hình với API, tầng logic và nguồn dữ liệu
-
-##### Kỹ Năng Phát Triển Thực Tế
-
-* Thiết kế workflow AI hoàn chỉnh từ đầu đến cuối
-* Tích hợp công cụ bên ngoài vào pipeline agent
-* Điều phối đa agent hiệu quả
-* Quản lý độ trễ, khả năng mở rộng và bảo mật
-* Triển khai agent với đầy đủ guardrails và hệ thống giám sát
-
-##### Ứng Dụng Vào Công Việc
-
-Người tham dự có thể áp dụng trực tiếp:
-
-* Xây dựng assistant, quy trình tự động hóa hoặc copilots nội bộ
-* Kết nối mô hình Bedrock với nền tảng doanh nghiệp
-* Phát triển workflow đa bước có cấu trúc với AgentCore
-* Tạo prototype nhanh mà không cần hạ tầng DevOps phức tạp
-* Ứng dụng phương pháp orchestration của CloudThinker để tăng hiệu suất
-* Áp dụng mô hình thiết kế agentic cho cả startup và doanh nghiệp lớn
-
-### Trải Nghiệm Sự Kiện
-
-Workshop “Agentic Build AI – Optimization with Amazon Bedrock” đã mang đến góc nhìn toàn diện về phát triển Agentic AI hiện đại.
-
-#### Kiến Thức Từ Chuyên Gia
-
-* Các diễn giả từ AWS, CloudThinker và Diaflow chia sẻ trải nghiệm triển khai thực tế
-* Hướng dẫn rõ ràng về cách mở rộng và vận hành giải pháp GenAI
-* Ví dụ cụ thể về tự động hóa quy trình doanh nghiệp bằng Agentic AI
-
-#### Trải Nghiệm Thực Hành
-
-* Xây dựng workflow agent hoàn chỉnh trong workshop
-* Hiểu rõ cách memory, identity và tool tương tác
-* Trải nghiệm thực tế với API và các thành phần orchestration của Bedrock
-
-#### Cơ Hội Kết Nối
-
-* Gặp gỡ kiến trúc sư AWS, kỹ sư, founder và các thành viên cộng đồng
-* Tìm hiểu các hướng phát triển sự nghiệp và thảo luận về sản phẩm AI
-* Trao đổi ý tưởng về hệ thống AI cloud-native
-
-#### Bài Học Rút Ra
-
-* Agentic AI vượt xa chatbot và ứng dụng LLM truyền thống
-* Triển khai thực tế yêu cầu identity, observability và khả năng mở rộng
-* Bedrock và CloudThinker cung cấp lộ trình mạnh mẽ từ prototype đến sản xuất
-* Dự án thực tế mang lại giá trị rõ ràng hơn so với các bài tập học thuật rời rạc
-
-#### Một số hình ảnh sự kiện
-
-<p align="center">
-  <img src="/images/4-EventParticipated/event_4/photo1.jpg" alt="Picture 1" />
-  <br/>
-  <strong style="font-size: 18px;">Hình 1</strong>
-</p>
-
-<p align="center">
-  <img src="/images/4-EventParticipated/event_4/photo2.jpg" alt="Picture 2" />
-  <br/>
-  <strong style="font-size: 18px;">Hình 2</strong>
-</p>
-
-<p align="center">
-  <img src="/images/4-EventParticipated/event_4/photo3.jpg" alt="Picture 3" />
-  <br/>
-  <strong style="font-size: 18px;">Hình 3</strong>
-</p>
-
-> Tóm lại, workshop đã mang đến sự kết hợp hài hòa giữa kiến thức chiến lược và kỹ năng thực hành. Người tham gia rời sự kiện với khả năng thiết kế workflow, tinh chỉnh ngữ cảnh, tích hợp công cụ và xây dựng hệ thống agentic mở rộng, an toàn trên AWS.
+---
