@@ -1,7 +1,7 @@
 ---
 title: "Nhật ký Tuần 8"
 date: ""
-weight: 8
+weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
