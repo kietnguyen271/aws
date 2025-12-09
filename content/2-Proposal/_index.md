@@ -124,3 +124,4 @@ The system leverages AWS-managed services for scalability and security, as visua
 - Secure, compliant, and maintainable cloud infrastructure.
 
 ---
+[👉 Download Word File](/docs/internship-report.docx)
