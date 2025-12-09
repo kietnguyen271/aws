@@ -8,6 +8,7 @@ pre: " <b> 2. </b> "
 
 # Đề Xuất Hệ Thống Hỗ Trợ Cai Thuốc Lá
 [📄 Download Proposal (.docx)](/Proposal.docx)
+
 ## 1. Tóm tắt Điều hành
 
 Bản đề xuất này mô tả thiết kế và triển khai một **Nền tảng Hỗ trợ Cai Thuốc Lá dựa trên đám mây**, nhằm giúp người dùng bỏ thuốc thông qua việc theo dõi dữ liệu, phân tích hành vi, huấn luyện bằng AI và tương tác cộng đồng.  
@@ -125,4 +126,3 @@ Hệ thống tận dụng các dịch vụ do AWS quản lý để đảm bảo 
 - Nền tảng an toàn, tuân thủ và dễ bảo trì.
 
 ---
-[📄 Download Proposal (.docx)](/Proposal.docx)
