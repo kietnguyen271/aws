@@ -125,4 +125,4 @@ Hệ thống tận dụng các dịch vụ do AWS quản lý để đảm bảo 
 - Nền tảng an toàn, tuân thủ và dễ bảo trì.
 
 ---
-[👉 Download Word File](/Proposal.docx)
+[📄 Download Proposal (.docx)](/aws/Proposal.docx)
