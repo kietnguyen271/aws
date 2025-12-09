@@ -1,10 +1,11 @@
 ---
 title: "Nhật ký Tuần 2"
 date: ""
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
+
 
 ### Mục tiêu Tuần 2:
 

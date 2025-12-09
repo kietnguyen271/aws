@@ -1,11 +1,10 @@
 ---
-title: "Week 11 Worklog"
+title: "Worklog Week 11"
 date: ""
-weight: 1
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-
 ### Week 11 Objectives
 
 * Strengthen understanding of DevOps practices on AWS:

@@ -1,11 +1,10 @@
 ---
 title: "Nhật ký Tuần 12"
 date: ""
-weight: 1
+weight: 12
 chapter: false
 pre: " <b> 1.12. </b> "
 ---
-
 ### Mục tiêu tuần 12
 
 * Tìm hiểu khái niệm CloudFront và cách tính chi phí sử dụng.

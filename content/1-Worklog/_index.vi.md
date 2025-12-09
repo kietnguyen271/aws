@@ -5,7 +5,6 @@ weight: 1
 chapter: false
 pre: " <b> 1. </b> "
 ---
-
 Worklog của em được ghi lại trong suốt 12 tuần thực tập tại First Cloud Journey, bao gồm các nội dung chính như sau:
 
 **Tuần 1:** [Làm quen với môi trường AWS, IAM, MFA, AWS CLI và các dịch vụ cơ bản](1.1-week1/)

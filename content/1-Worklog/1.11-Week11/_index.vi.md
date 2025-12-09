@@ -1,11 +1,10 @@
 ---
 title: "Nhật ký Tuần 11"
 date: ""
-weight: 1
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-
 ### Mục tiêu tuần 11
 
 * Tăng cường hiểu biết về các thực hành DevOps trên AWS:

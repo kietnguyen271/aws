@@ -1,7 +1,7 @@
 ---
-title: "Week 8 Worklog"
+title: "Worklog Week 8"
 date: ""
-weight: 1
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---

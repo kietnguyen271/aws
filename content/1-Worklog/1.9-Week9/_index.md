@@ -1,10 +1,11 @@
 ---
-title: "Week 9 Worklog"
+title: "Worklog Week 9"
 date: ""
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
+
 
 ### Week 9 Objectives
 

@@ -1,5 +1,5 @@
 ---
-title: "Worklog Overview"
+title: "Worklog"
 date: ""
 weight: 1
 chapter: false
