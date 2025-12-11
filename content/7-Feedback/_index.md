@@ -27,6 +27,8 @@ During my internship, what impressed me most was the supportive culture at FCJ. 
 The company offers flexible working hours, making it easier to balance studying and working. In addition, during events, there are always small gifts for participating students, creating a friendly atmosphere where we can learn while also enjoying the experience.
 
 ### Suggestions & Expectations
-- The aspect I appreciate the most is the flexible working policy, which allows interns to choose their on-site working days. This creates a comfortable environment and helps me maintain a good balance between my studies and internship responsibilities.
+- I hope FCJ can organize additional advanced workshops on topics such as system architecture, security, AWS cost optimization, and best practices for serverless development, so that interns can further broaden their practical knowledge.
 
-- This is an excellent environment for IT students. Therefore, I would gladly recommend AWS/FCJ to my friends so they can also gain practical experience and learn valuable knowledge about cloud computing—topics that are not covered in depth in university courses.
+- I would also appreciate having more cross-team technical sharing sessions, as these activities provide valuable opportunities to learn from different projects and strengthen our problem-solving mindset.
+
+- Additionally, I hope there could be periodic one-on-one feedback sessions with mentors, allowing interns to clearly understand their strengths and areas for improvement, which would help guide our personal development more effectively.

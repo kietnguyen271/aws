@@ -26,6 +26,8 @@ Trong thời gian thực tập, điều khiến mình ấn tượng nhất là v
 Công ty có lịch làm việc linh hoạt, giúp mình dễ dàng cân bằng giữa việc học và công việc.Ngoài ra trong các buổi tham dự sự kiện luôn có quà dành cho sinh viên tham gia giúp tạo không gian gần gũi vừa được học vừa được thưởng.
 
 ### Đề xuất & Mong muốn
-- Điểm mình hài lòng nhất là chính sách làm việc linh hoạt, cho phép thực tập sinh tự lựa chọn ngày lên văn phòng. Điều này mang lại sự thoải mái và giúp mình dễ dàng duy trì hiệu quả học tập lẫn công việc.
+- Mình mong FCJ có thể bổ sung thêm nhiều buổi workshop chuyên sâu về các chủ đề nâng cao như kiến trúc hệ thống, bảo mật, tối ưu chi phí AWS hoặc best practices khi triển khai serverless, để thực tập sinh có thêm cơ hội mở rộng kiến thức thực tế.
 
-- Đây là một môi trường rất phù hợp cho sinh viên ngành CNTT. Vì vậy, mình hoàn toàn sẵn lòng giới thiệu AWS/FCJ cho bạn bè để có cơ hội trải nghiệm và học hỏi thêm những kiến thức thực tế về cloud computing mà chương trình học ở trường chưa đề cập sâu.
+- Hy vọng công ty có thể tăng thêm số lượng hoạt động trao đổi kỹ thuật giữa các nhóm (tech sharing), giúp bọn mình học hỏi thêm kinh nghiệm từ nhiều dự án khác nhau và cải thiện tư duy giải quyết vấn đề.
+
+- Mình cũng mong muốn có thêm những buổi phản hồi 1-1 với mentor theo từng giai đoạn, để thực tập sinh dễ dàng nắm rõ điểm mạnh – điểm cần cải thiện, từ đó định hướng tốt hơn cho lộ trình phát triển bản thân.
