@@ -10,6 +10,7 @@ pre: " <b> 7. </b> "
 
 **1. Môi trường làm việc**  
 Không gian làm việc tại FCJ tạo cảm giác thân thiện và rất dễ hòa nhập. Các anh chị trong công ty luôn hỗ trợ nhiệt tình mỗi khi mình gặp khó khăn, kể cả ngoài giờ làm. Bàn làm việc và khu vực văn phòng được bố trí ngăn nắp, đầy đủ các tiện ích như ổ điện , máy lạnh ,máy chiếu..
+
 **2. Sự hỗ trợ từ mentor / team admin**  
 Mentor hướng dẫn rõ ràng, giải thích chi tiết các vấn đề kỹ thuật và khuyến khích mình tự tìm hiểu trước khi đưa ra lời giải. Điều này giúp mình rèn luyện khả năng tự học . Team admin hỗ trợ nhanh trong các thủ tục, tài liệu và luôn tạo điều kiện thuận lợi cho thực tập sinh.
 
